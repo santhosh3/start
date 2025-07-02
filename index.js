@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const config = require('./src/config');
 const authRouter = require('./src/routes/routes');
+const blogRouter = require('./src/routes/blog.routes');
 require('dotenv').config();
 
 const MONGODB = config.MONGODB;
@@ -27,6 +28,8 @@ mongoose.connect(process.env.MONGO_URL, {
 // })
 
 app.use('/auth', authRouter);
+app.use('/', blogRouter);
+
 
 const port = config.port ?? 4000
 

@@ -24,6 +24,12 @@ const userLoginSchema = z.object({
   password: z.string().min(8).trim(),
 });
 
+const blogSchema = z.object({
+  title: z.string().trim().min(5),
+  description: z.string().min(8).trim(),
+});
+
+
 
 function validateData(schema, data) {
   try {
@@ -56,7 +62,7 @@ function createToken(data) {
   return jwt.sign(data, jwtSecret.jwt);
 }
 
-function verifyToken(data) {
+function verifyToken(token) {
   return jwt.verify(token, jwtSecret.jwt);
 }
 
@@ -66,5 +72,7 @@ module.exports = {
   validateData,
   userLoginSchema,
   compareHashPassword,
-  createToken
+  createToken,
+  verifyToken,
+  blogSchema
 };
