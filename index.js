@@ -12,8 +12,12 @@ const MONGODB = config.MONGODB;
 // global level middleware
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log('Connected mongoDB successfully'));
+mongoose.connect(process.env.MONGO_URL, {
+}).then(() => {
+    console.log('MongoDB connected successfully');
+}).catch(err => {
+    console.error('MongoDB connection error:', err);
+});
 
 
 // "/" -> endPoint

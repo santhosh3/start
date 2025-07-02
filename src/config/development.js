@@ -1,9 +1,10 @@
-require('dotenv').config();
+require("dotenv").config();
+
 
 
 let obj = {
-    port : process.env.PORT,
-    mongo : process.env.MONGO_URL
-}
+  port: process.env.PORT,
+  jwt: process.env.JWT_SECRET
+};
 
 module.exports = obj;
